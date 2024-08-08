@@ -57,6 +57,9 @@ spec:
                 name: ps-{{ include "google-tag-manager.fullname" . }}
             - secretRef:
                 name: ps-{{ include "google-tag-manager.fullname" . }}
+      {{- with .Values.previewServer.priorityClassName }}
+      priorityClassName: {{ . }}
+      {{- end }}
       {{- with .Values.previewServer.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

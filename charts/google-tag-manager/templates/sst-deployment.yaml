@@ -56,6 +56,9 @@ spec:
                 name: sst-{{ include "google-tag-manager.fullname" . }}
             - secretRef:
                 name: sst-{{ include "google-tag-manager.fullname" . }}
+      {{- with .Values.serverSideTagging.priorityClassName }}
+      priorityClassName: {{ . }}
+      {{- end }}
       {{- with .Values.serverSideTagging.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

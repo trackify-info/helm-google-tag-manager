@@ -59,6 +59,8 @@ previewServer:
 
   secretEnvironment: {}
 
+  priorityClassName: ""
+
   nodeSelector: {}
 
   affinity: {}
@@ -198,6 +200,8 @@ serverSideTagging:
   environment: {}
 
   secretEnvironment: {}
+
+  priorityClassName: ""
 
   nodeSelector: {}
 
