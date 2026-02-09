@@ -1,8 +1,8 @@
-# google-tag-manager
+# helm-google-tag-manager
 
 ## Overview
 
-**Google Tag Manager** is a [Tag Management System](https://en.wikipedia.org/wiki/Tag_management_system) (TMS) that allows you to quickly and easily update measurement codes and related code fragments, collectively known as **Tags**, on your Website or Mobile App.
+**Helm Charts for Google Tag Manager** is a [Tag Management System](https://en.wikipedia.org/wiki/Tag_management_system) (TMS) that allows you to quickly and easily update measurement codes and related code fragments, collectively known as **Tags**, on your Website or Mobile App.
 
 Once the small segment of Tag Manager Code has been added to your Project, you can safely and easily deploy Analytics and Measurement Tag Configurations from a Web-Based User Interface.
 
@@ -20,7 +20,7 @@ Please refer to Helm [Documentation](https://helm.sh/docs) to get started.
 
 Once Helm has been set up correctly, add locally the Helm Chart Repository as follows:
 
-    helm repo add gtm https://jobtome-labs.github.io/google-tag-manager
+    helm repo add gtm https://trackify-info.github.io/helm-google-tag-manager
 
 If you had already added this Repository earlier, run `helm repo update` to retrieve the latest versions of this Chart.
 
