@@ -1,0 +1,55 @@
+{{- if .Values.previewServer.gateway.enabled -}}
+{{- $fullName := include "google-tag-manager.fullname" . -}}
+{{- $svcPort := .Values.previewServer.service.port -}}
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: ps-{{ $fullName }}
+  labels:
+    {{- include "google-tag-manager.labels" . | nindent 4 }}
+  {{- with .Values.previewServer.gateway.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.previewServer.gateway.parentRefs }}
+  parentRefs:
+    {{- toYaml .Values.previewServer.gateway.parentRefs | nindent 4 }}
+  {{- else }}
+  parentRefs:
+    - name: {{ .Values.previewServer.gateway.gatewayName | default "eg" }}
+      {{- if .Values.previewServer.gateway.gatewayNamespace }}
+      namespace: {{ .Values.previewServer.gateway.gatewayNamespace }}
+      {{- end }}
+      {{- if .Values.previewServer.gateway.sectionName }}
+      sectionName: {{ .Values.previewServer.gateway.sectionName }}
+      {{- end }}
+  {{- end }}
+  {{- if .Values.previewServer.gateway.hostnames }}
+  hostnames:
+    {{- range .Values.previewServer.gateway.hostnames }}
+    - {{ . | quote }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.previewServer.gateway.rules }}
+    - matches:
+        {{- if .matches }}
+        {{- toYaml .matches | nindent 8 }}
+        {{- else }}
+        - path:
+            type: {{ .pathType | default "PathPrefix" }}
+            value: {{ .path | default "/" }}
+        {{- end }}
+      {{- if .filters }}
+      filters:
+        {{- toYaml .filters | nindent 8 }}
+      {{- end }}
+      backendRefs:
+        - name: ps-{{ $fullName }}
+          port: {{ $svcPort }}
+          {{- if .weight }}
+          weight: {{ .weight }}
+          {{- end }}
+    {{- end }}
+{{- end }}

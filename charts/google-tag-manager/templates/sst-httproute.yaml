@@ -1,0 +1,55 @@
+{{- if .Values.serverSideTagging.gateway.enabled -}}
+{{- $fullName := include "google-tag-manager.fullname" . -}}
+{{- $svcPort := .Values.serverSideTagging.service.port -}}
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: sst-{{ $fullName }}
+  labels:
+    {{- include "google-tag-manager.labels" . | nindent 4 }}
+  {{- with .Values.serverSideTagging.gateway.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.serverSideTagging.gateway.parentRefs }}
+  parentRefs:
+    {{- toYaml .Values.serverSideTagging.gateway.parentRefs | nindent 4 }}
+  {{- else }}
+  parentRefs:
+    - name: {{ .Values.serverSideTagging.gateway.gatewayName | default "eg" }}
+      {{- if .Values.serverSideTagging.gateway.gatewayNamespace }}
+      namespace: {{ .Values.serverSideTagging.gateway.gatewayNamespace }}
+      {{- end }}
+      {{- if .Values.serverSideTagging.gateway.sectionName }}
+      sectionName: {{ .Values.serverSideTagging.gateway.sectionName }}
+      {{- end }}
+  {{- end }}
+  {{- if .Values.serverSideTagging.gateway.hostnames }}
+  hostnames:
+    {{- range .Values.serverSideTagging.gateway.hostnames }}
+    - {{ . | quote }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.serverSideTagging.gateway.rules }}
+    - matches:
+        {{- if .matches }}
+        {{- toYaml .matches | nindent 8 }}
+        {{- else }}
+        - path:
+            type: {{ .pathType | default "PathPrefix" }}
+            value: {{ .path | default "/" }}
+        {{- end }}
+      {{- if .filters }}
+      filters:
+        {{- toYaml .filters | nindent 8 }}
+      {{- end }}
+      backendRefs:
+        - name: sst-{{ $fullName }}
+          port: {{ $svcPort }}
+          {{- if .weight }}
+          weight: {{ .weight }}
+          {{- end }}
+    {{- end }}
+{{- end }}

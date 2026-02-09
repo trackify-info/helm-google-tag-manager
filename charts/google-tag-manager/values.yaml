@@ -138,6 +138,48 @@ previewServer:
       {}
       # name: "example-security-policy"
 
+  gateway:
+    enabled: false
+
+    # Name of the Gateway resource to attach to
+    gatewayName: "eg"
+
+    # Namespace of the Gateway (optional, defaults to same namespace)
+    # gatewayNamespace: ""
+
+    # Section name for specific listener (optional)
+    # sectionName: ""
+
+    # Custom parentRefs for advanced configurations (optional)
+    # If specified, gatewayName, gatewayNamespace, and sectionName are ignored
+    parentRefs: []
+      # - name: eg
+      #   namespace: envoy-gateway-system
+      #   sectionName: https
+
+    annotations:
+      {}
+      # cert-manager.io/cluster-issuer: letsencrypt-prod
+
+    hostnames:
+      - "gtm-preview.example.com"
+
+    rules:
+      - path: /
+        pathType: PathPrefix
+        # Advanced match configuration (optional)
+        # matches:
+        #   - path:
+        #       type: PathPrefix
+        #       value: /
+        # Filters for request/response modification (optional)
+        # filters:
+        #   - type: RequestHeaderModifier
+        #     requestHeaderModifier:
+        #       add:
+        #         - name: X-Custom-Header
+        #           value: custom-value
+
   testConnection:
     internal:
       enabled: true
@@ -288,6 +330,48 @@ serverSideTagging:
     securityPolicy:
       {}
       # name: "example-security-policy"
+
+  gateway:
+    enabled: false
+
+    # Name of the Gateway resource to attach to
+    gatewayName: "eg"
+
+    # Namespace of the Gateway (optional, defaults to same namespace)
+    # gatewayNamespace: ""
+
+    # Section name for specific listener (optional)
+    # sectionName: ""
+
+    # Custom parentRefs for advanced configurations (optional)
+    # If specified, gatewayName, gatewayNamespace, and sectionName are ignored
+    parentRefs: []
+      # - name: eg
+      #   namespace: envoy-gateway-system
+      #   sectionName: https
+
+    annotations:
+      {}
+      # cert-manager.io/cluster-issuer: letsencrypt-prod
+
+    hostnames:
+      - "gtm-sst.example.com"
+
+    rules:
+      - path: /
+        pathType: PathPrefix
+        # Advanced match configuration (optional)
+        # matches:
+        #   - path:
+        #       type: PathPrefix
+        #       value: /
+        # Filters for request/response modification (optional)
+        # filters:
+        #   - type: RequestHeaderModifier
+        #     requestHeaderModifier:
+        #       add:
+        #         - name: X-Custom-Header
+        #           value: custom-value
 
   testConnection:
     internal:

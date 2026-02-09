@@ -171,3 +171,128 @@ In addition, you can enable [NEGs](https://cloud.google.com/kubernetes-engine/do
     neg:
       enabled: true
 ```
+
+
+### Example Values for Envoy Gateway
+
+The following Example Helm Values demonstrate how to use **Envoy Gateway** with the **Gateway API** instead of traditional Ingress resources.
+
+This configuration assumes you have [Envoy Gateway](https://gateway.envoyproxy.io/) installed in your cluster and a Gateway resource already created.
+
+```YAML
+containerConfig: "<your-container-config>"
+
+previewServer:
+  replicaCount: 1
+
+  pdb:
+    enabled: true
+
+  gateway:
+    enabled: true
+
+    # Reference to your existing Gateway resource
+    gatewayName: "eg"
+    gatewayNamespace: "envoy-gateway-system"
+    
+    # Optional: specify a specific listener section
+    # sectionName: "https"
+
+    annotations:
+      cert-manager.io/cluster-issuer: "<cluster-issuer>"
+
+    hostnames:
+      - "ps.gtm.example.com"
+
+    rules:
+      - path: /
+        pathType: PathPrefix
+
+serverSideTagging:
+  previewServerUrl: https://ps.gtm.example.com
+
+  pdb:
+    enabled: true
+
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+
+  gateway:
+    enabled: true
+
+    # Reference to your existing Gateway resource
+    gatewayName: "eg"
+    gatewayNamespace: "envoy-gateway-system"
+
+    annotations:
+      cert-manager.io/cluster-issuer: "<cluster-issuer>"
+
+    hostnames:
+      - "sst.gtm.example.com"
+
+    rules:
+      - path: /
+        pathType: PathPrefix
+```
+
+#### Advanced Gateway Configuration
+
+For more advanced use cases, you can use custom `parentRefs` and filters:
+
+```YAML
+previewServer:
+  gateway:
+    enabled: true
+    
+    # Custom parentRefs for advanced configurations
+    parentRefs:
+      - name: eg
+        namespace: envoy-gateway-system
+        sectionName: https
+      - name: eg-internal
+        namespace: envoy-gateway-system
+        sectionName: http
+
+    hostnames:
+      - "ps.gtm.example.com"
+
+    rules:
+      - path: /
+        pathType: PathPrefix
+        # Add custom request headers
+        filters:
+          - type: RequestHeaderModifier
+            requestHeaderModifier:
+              add:
+                - name: X-Custom-Header
+                  value: custom-value
+              remove:
+                - X-Unwanted-Header
+```
+
+#### Using Both Ingress and Gateway
+
+You can enable both Ingress and Gateway simultaneously if needed:
+
+```YAML
+previewServer:
+  ingress:
+    enabled: true
+    className: "nginx"
+    hosts:
+      - host: ps-ingress.gtm.example.com
+        paths:
+          - path: /
+            pathType: Prefix
+
+  gateway:
+    enabled: true
+    gatewayName: "eg"
+    hostnames:
+      - "ps-gateway.gtm.example.com"
+    rules:
+      - path: /
+        pathType: PathPrefix
+```
