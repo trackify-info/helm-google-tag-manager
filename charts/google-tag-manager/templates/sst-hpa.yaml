@@ -28,6 +28,7 @@ spec:
         target:
           type: Utilization
           averageUtilization: {{ .Values.serverSideTagging.autoscaling.targetMemoryUtilizationPercentage }}
+    {{- end }}
     behavior:
       scaleUp:
         stabilizationWindowSeconds: 60
@@ -46,5 +47,4 @@ spec:
         - type: Pods
           value: 1
           periodSeconds: 60
-    {{- end }}
 {{- end }}
