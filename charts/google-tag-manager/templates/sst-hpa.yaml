@@ -13,38 +13,38 @@ spec:
   minReplicas: {{ .Values.serverSideTagging.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.serverSideTagging.autoscaling.maxReplicas }}
   metrics:
-    {{- if .Values.serverSideTagging.autoscaling.targetCPUUtilizationPercentage }}
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: {{ .Values.serverSideTagging.autoscaling.targetCPUUtilizationPercentage }}
-    {{- end }}
-    {{- if .Values.serverSideTagging.autoscaling.targetMemoryUtilizationPercentage }}
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: {{ .Values.serverSideTagging.autoscaling.targetMemoryUtilizationPercentage }}
-    {{- end }}
-    behavior:
-      scaleUp:
-        stabilizationWindowSeconds: 60
-        selectPolicy: Max
-        policies:
-        - type: Pods
-          value: 1
-          periodSeconds: 15
-        - type: Percent
-          value: 100
-          periodSeconds: 15
-      scaleDown:
-        stabilizationWindowSeconds: 600
-        selectPolicy: Max
-        policies:
-        - type: Pods
-          value: 1
-          periodSeconds: 60
+  {{- if .Values.serverSideTagging.autoscaling.targetCPUUtilizationPercentage }}
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.serverSideTagging.autoscaling.targetCPUUtilizationPercentage }}
+  {{- end }}
+  {{- if .Values.serverSideTagging.autoscaling.targetMemoryUtilizationPercentage }}
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: {{ .Values.serverSideTagging.autoscaling.targetMemoryUtilizationPercentage }}
+  {{- end }}
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      selectPolicy: Max
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 15
+      - type: Percent
+        value: 100
+        periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 600
+      selectPolicy: Max
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 60
 {{- end }}
