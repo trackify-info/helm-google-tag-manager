@@ -2,8 +2,56 @@ apiVersion: v1
 entries:
   google-tag-manager:
   - apiVersion: v2
+    appVersion: 1.17.3
+    created: "2026-02-18T18:53:26.678369909-05:00"
+    description: A Helm Chart for Google Tag Manager
+    digest: b3782f5013348abeafb21ce260ad18f24c9e063c4b77fa8588e141c0a4690e3b
+    home: https://github.com/trackify-info/helm-google-tag-manager
+    icon: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_tag_manager.svg
+    keywords:
+    - google
+    - tag
+    - manager
+    - tagmanager
+    - analytics
+    - advertising
+    maintainers:
+    - email: mklier@trackify.info
+      name: Matthias Klier
+    name: google-tag-manager
+    sources:
+    - https://github.com/trackify-info/helm-google-tag-manager
+    type: application
+    urls:
+    - https://trackify-info.github.io/helm-google-tag-manager/google-tag-manager-0.4.3.tgz
+    version: 0.4.3
+  - apiVersion: v2
+    appVersion: 1.17.3
+    created: "2026-02-18T18:53:26.679815513-05:00"
+    description: A Helm Chart for Google Tag Manager
+    digest: b3782f5013348abeafb21ce260ad18f24c9e063c4b77fa8588e141c0a4690e3b
+    home: https://github.com/trackify-info/helm-google-tag-manager
+    icon: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_tag_manager.svg
+    keywords:
+    - google
+    - tag
+    - manager
+    - tagmanager
+    - analytics
+    - advertising
+    maintainers:
+    - email: mklier@trackify.info
+      name: Matthias Klier
+    name: google-tag-manager
+    sources:
+    - https://github.com/trackify-info/helm-google-tag-manager
+    type: application
+    urls:
+    - https://trackify-info.github.io/helm-google-tag-manager/.deploy/google-tag-manager-0.4.3.tgz
+    version: 0.4.3
+  - apiVersion: v2
     appVersion: 1.17.2
-    created: "2026-02-18T12:02:49.297778437-05:00"
+    created: "2026-02-18T18:53:26.676752471-05:00"
     description: A Helm Chart for Google Tag Manager
     digest: 152b32fe3deb28a6ecbc9a5b12291496bd49223fd1a3f6dbc94c2d93c838cb45
     home: https://github.com/trackify-info/helm-google-tag-manager
@@ -26,32 +74,8 @@ entries:
     - https://trackify-info.github.io/helm-google-tag-manager/google-tag-manager-0.4.2.tgz
     version: 0.4.2
   - apiVersion: v2
-    appVersion: 1.17.2
-    created: "2026-02-18T12:02:49.299630202-05:00"
-    description: A Helm Chart for Google Tag Manager
-    digest: 152b32fe3deb28a6ecbc9a5b12291496bd49223fd1a3f6dbc94c2d93c838cb45
-    home: https://github.com/trackify-info/helm-google-tag-manager
-    icon: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_tag_manager.svg
-    keywords:
-    - google
-    - tag
-    - manager
-    - tagmanager
-    - analytics
-    - advertising
-    maintainers:
-    - email: mklier@trackify.info
-      name: Matthias Klier
-    name: google-tag-manager
-    sources:
-    - https://github.com/trackify-info/helm-google-tag-manager
-    type: application
-    urls:
-    - https://trackify-info.github.io/helm-google-tag-manager/.deploy/google-tag-manager-0.4.2.tgz
-    version: 0.4.2
-  - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-02-18T12:02:49.295849506-05:00"
+    created: "2026-02-18T18:53:26.675441504-05:00"
     description: A Helm Chart for Google Tag Manager
     digest: cc37755292ccbe45df50b7a1739d8264ae180da6f3a35ae1ec491aedc382621a
     home: https://github.com/jobtome-labs/google-tag-manager
@@ -75,7 +99,7 @@ entries:
     version: 0.4.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-02-18T12:02:49.29392505-05:00"
+    created: "2026-02-18T18:53:26.673915475-05:00"
     description: A Helm Chart for Google Tag Manager
     digest: 8cbbbe9e441063f0c043dd921e54b2a7207e8a03a14961ee6f4339eb5afffd63
     home: https://github.com/jobtome-labs/google-tag-manager
@@ -97,4 +121,4 @@ entries:
     urls:
     - https://trackify-info.github.io/helm-google-tag-manager/google-tag-manager-0.4.0.tgz
     version: 0.4.0
-generated: "2026-02-18T12:02:49.291622427-05:00"
+generated: "2026-02-18T18:53:26.672064481-05:00"
