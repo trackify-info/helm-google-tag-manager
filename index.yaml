@@ -3,7 +3,55 @@ entries:
   google-tag-manager:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2026-02-09T17:48:32.911921638-05:00"
+    created: "2026-02-18T05:41:43.92335411-05:00"
+    description: A Helm Chart for Google Tag Manager
+    digest: cc37755292ccbe45df50b7a1739d8264ae180da6f3a35ae1ec491aedc382621a
+    home: https://github.com/jobtome-labs/google-tag-manager
+    icon: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_tag_manager.svg
+    keywords:
+    - google
+    - tag
+    - manager
+    - tagmanager
+    - analytics
+    - advertising
+    maintainers:
+    - email: daniel.toncu@jobtome.com
+      name: Daniel Țoncu
+    name: google-tag-manager
+    sources:
+    - https://github.com/jobtome-labs/google-tag-manager
+    type: application
+    urls:
+    - https://trackify-info.github.io/helm-google-tag-manager/google-tag-manager-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2026-02-18T05:41:43.924648547-05:00"
+    description: A Helm Chart for Google Tag Manager
+    digest: cc37755292ccbe45df50b7a1739d8264ae180da6f3a35ae1ec491aedc382621a
+    home: https://github.com/jobtome-labs/google-tag-manager
+    icon: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_tag_manager.svg
+    keywords:
+    - google
+    - tag
+    - manager
+    - tagmanager
+    - analytics
+    - advertising
+    maintainers:
+    - email: daniel.toncu@jobtome.com
+      name: Daniel Țoncu
+    name: google-tag-manager
+    sources:
+    - https://github.com/jobtome-labs/google-tag-manager
+    type: application
+    urls:
+    - https://trackify-info.github.io/helm-google-tag-manager/.deploy/google-tag-manager-0.4.1.tgz
+    version: 0.4.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2026-02-18T05:41:43.922046496-05:00"
     description: A Helm Chart for Google Tag Manager
     digest: 8cbbbe9e441063f0c043dd921e54b2a7207e8a03a14961ee6f4339eb5afffd63
     home: https://github.com/jobtome-labs/google-tag-manager
@@ -25,4 +73,4 @@ entries:
     urls:
     - https://trackify-info.github.io/helm-google-tag-manager/google-tag-manager-0.4.0.tgz
     version: 0.4.0
-generated: "2026-02-09T17:48:32.910344711-05:00"
+generated: "2026-02-18T05:41:43.920288558-05:00"
