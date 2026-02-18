@@ -3,11 +3,11 @@ apiVersion: v2
 
 type: application
 
-name: google-tag-manager
+name: helm-google-tag-manager
 description: A Helm Chart for Google Tag Manager
 
 version: "0.4.1"
-appVersion: "1.16.0"
+appVersion: "1.17.0"
 
 keywords:
   - google
@@ -17,12 +17,12 @@ keywords:
   - analytics
   - advertising
 
-home: https://github.com/jobtome-labs/google-tag-manager
+home: https://github.com/trackify-info/helm-google-tag-manager
 icon: https://www.gstatic.com/analytics-suite/header/suite/v2/ic_tag_manager.svg
 
 sources:
-  - https://github.com/jobtome-labs/google-tag-manager
+  - https://github.com/trackify-info/helm-google-tag-manager
 
 maintainers:
-  - name: Daniel Țoncu
-    email: daniel.toncu@jobtome.com
+  - name: Matthias Klier
+    email: mklier@trackify.info
