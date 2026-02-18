@@ -6,8 +6,8 @@ type: application
 name: google-tag-manager
 description: A Helm Chart for Google Tag Manager
 
-version: "0.4.2"
-appVersion: "1.17.2"
+version: "0.4.3"
+appVersion: "1.17.3"
 
 keywords:
   - google
