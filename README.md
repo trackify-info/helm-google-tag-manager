@@ -30,7 +30,7 @@ You can then run `helm search repo gtm` to see the Chart.
 
 To install the Google Tag Manager Chart:
 
-    helm install gtm gtm/google-tag-manager
+    helm install gtm gtm/helm-google-tag-manager
 
 ### Uninstall Google Tag Manager Chart
 
@@ -62,26 +62,29 @@ previewServer:
   pdb:
     enabled: true
 
-  ingress:
+  gateway:
     enabled: true
+
+  ingress:
+    enabled: false
 
     annotations:
       kubernetes.io/ingress.class: "<ingress-class>"
-      external-dns.alpha.kubernetes.io/hostname: ps.gtm.jobtome.com
+      external-dns.alpha.kubernetes.io/hostname: ps.gtm.trackify.info
       external-dns.alpha.kubernetes.io/ttl: "200"
       cert-manager.io/cluster-issuer: "<cluster-issuer>"
       acme.cert-manager.io/http01-edit-in-place: "true"
 
     hosts:
-      - host: ps.gtm.jobtome.com
+      - host: ps.gtm.trackify.info
         paths:
           - path: /
             pathType: ImplementationSpecific
 
     tls:
-      - secretName: ps-gtm-jobtome-com-tls
+      - secretName: ps-gtm-trackify-info-tls
         hosts:
-          - ps.gtm.jobtome.com
+          - ps.gtm.trackify.info
 
   frontendConfig:
     enabled: true
@@ -106,7 +109,7 @@ previewServer:
       port: 8080
 
 serverSideTagging:
-  previewServerUrl: https://ps.gtm.jobtome.com
+  previewServerUrl: https://ps.gtm.trackify.info
 
   service:
     type: NodePort
@@ -125,21 +128,21 @@ serverSideTagging:
 
     annotations:
       kubernetes.io/ingress.class: "<ingress-class>"
-      external-dns.alpha.kubernetes.io/hostname: sst.gtm.jobtome.com
+      external-dns.alpha.kubernetes.io/hostname: sst.gtm.trackify.info
       external-dns.alpha.kubernetes.io/ttl: "200"
       cert-manager.io/cluster-issuer: "<cluster-issuer>"
       acme.cert-manager.io/http01-edit-in-place: "true"
 
     hosts:
-      - host: sst.gtm.jobtome.com
+      - host: sst.gtm.trackify.info
         paths:
           - path: /
             pathType: ImplementationSpecific
 
     tls:
-      - secretName: sst-gtm-jobtome-com-tls
+      - secretName: sst-gtm-trackify-info-tls
         hosts:
-          - sst.gtm.jobtome.com
+          - sst.gtm.trackify.info
 
   frontendConfig:
     enabled: true
