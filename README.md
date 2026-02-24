@@ -30,7 +30,7 @@ You can then run `helm search repo gtm` to see the Chart.
 
 To install the Google Tag Manager Chart:
 
-    helm install gtm gtm/helm-google-tag-manager
+    helm install gtm gtm/google-tag-manager -f vals.yaml
 
 ### Uninstall Google Tag Manager Chart
 
