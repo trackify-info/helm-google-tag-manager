@@ -1,4 +1,4 @@
-# helm-google-tag-manager
+# helm-google-tag-manager - now with Gateway Api Support
 
 ## Overview
 
